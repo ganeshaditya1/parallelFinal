@@ -1,0 +1,13 @@
+#!/bin/sh
+#SBATCH -J NATIVE_BARRIER_BUTTERFLY
+#SBATCH -o NATIVE_BARRIER_BUTTERFLY.%J.stdout
+#SBATCH -e NATIVE_BARRIER_BUTTERFLY.%J.stderr
+#SBATCH -p main
+#SBATCH -N 1
+#SBATCH -n 16
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=16
+#SBATCH -t 00:10:00
+
+g++ -g -mcmodel=medium suffixTree.c rabinKarp.c crux.cpp -fopenmp
+./a.out
